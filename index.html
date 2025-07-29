@@ -938,24 +938,6 @@
         `;
         document.head.appendChild(style);
 
-        document.querySelectorAll('.contact-item a').forEach(link => {
-            link.addEventListener('click', async (e) => {
-                e.preventDefault();
-                const text = link.textContent;
-                try {
-                    await navigator.clipboard.writeText(text);
-                    if (link.href.includes('mailto:')) {
-                        showContactNotification('Email');
-                        window.location.href = link.href;
-                    } else if (link.href.includes('tel:')) {
-                        showContactNotification('Teléfono');
-                    }
-                } catch (err) {
-                    window.location.href = link.href;
-                }
-            });
-        });
-
         const projectDescriptions = document.querySelectorAll('.project-description');
         projectDescriptions.forEach((desc, index) => {
             desc.style.opacity = '0';
